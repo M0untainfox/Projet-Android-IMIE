@@ -16,7 +16,7 @@ public class Dames extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.battleship_layout);
+        setContentView(R.layout.dames_laytout);
 
 
 
