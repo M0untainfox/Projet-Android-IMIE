@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ProjetAndroidIMIE</string>
+    <string name="app_name">Doggo checkers</string>
     <string name="txt_pass">Password</string>
     <string name="txt_view">Username</string>
     <string-array name="ar_jeux">

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ProjetAndroidIMIE</string>
+    <string name="app_name">Doggo checkers</string>
     <string name="btn_login" translatable="false">Go</string>
     <string name="btn_Save">Enregistrer</string>
     <string name="btn_Load">Charger</string>
