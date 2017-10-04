@@ -3,7 +3,9 @@ package com.example.mbp.projetandroidimie.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.GridView;
 
 import com.example.mbp.projetandroidimie.R;
@@ -21,7 +23,7 @@ public class Dames extends AppCompatActivity{
 
     GridView gv;
     Case[][] tab_case;
-    Jeux[] tab_jeux;
+    Case[] tabCaseFinal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +32,26 @@ public class Dames extends AppCompatActivity{
 
         initGridView();
 
+        final Button button = (Button) findViewById(R.id.btnMove);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                move();
+            }
+        });
 
-        /*Intent newIntent = new Intent(this,MenuActivity.class);
-        newIntent.putExtra("result","you win the war");
-        setResult(MesConstantes.RC_battleship,newIntent);
-        //finish();*/
+    }
+
+    public void move(){
+
+        int i = 0;
+        int j = 0;
+
+
+        Case tmp = tabCaseFinal[0];
+        tabCaseFinal[0] = new Case(true,0);
+        tabCaseFinal[25] = tmp;
+
+        gv.setAdapter(new adapterCase(this,R.layout.case_element,tabCaseFinal));
     }
 
 
@@ -42,30 +59,16 @@ public class Dames extends AppCompatActivity{
 
         gv = (GridView)findViewById(R.id.grid_viewDame);
 
-        tab_jeux = new Jeux[6];
-
-
-        tab_jeux[0] = new Jeux("a",R.drawable.dames,new Intent(this, Dames.class));
-        tab_jeux[1] = new Jeux("a",R.drawable.sudoku,new Intent(this, Sudoku.class));
-        tab_jeux[2] = new Jeux("a",R.drawable.p4,new Intent(this, P4.class));
-        tab_jeux[3] = new Jeux("a",R.drawable.chevaux,new Intent(this, Horses.class));
-        tab_jeux[4] = new Jeux("a",R.drawable.bn,new Intent(this, Battleship.class));
-        tab_jeux[5] = new Jeux("a",R.drawable.echecs,new Intent(this, Chess.class));
-
-
-
-
-
         tab_case = new Case[8][8];
 
         for(int i=0;i<8;i++){
             for(int j=0;j<8;j++){
                 if((i%2 == 0 && j%2 ==0) || (i%2 == 1 && j%2 ==1)){
                     if(j<3){
-                        tab_case[i][j] = new Case(true,R.drawable.p1);
+                        tab_case[i][j] = new Case(true,R.drawable.cumlord);
                     }
                     else if(j>4){
-                        tab_case[i][j] = new Case(true,R.drawable.p2);
+                        tab_case[i][j] = new Case(true,R.drawable.gabe_noir);
                     }
                     else tab_case[i][j] = new Case(true,0);
 
@@ -75,7 +78,7 @@ public class Dames extends AppCompatActivity{
         }
 
 
-        Case[] tabCaseFinal = new Case[64];
+        tabCaseFinal= new Case[64];
 
         for(int i=0;i<8;i++){
             for(int j=0;j<8;j++){
