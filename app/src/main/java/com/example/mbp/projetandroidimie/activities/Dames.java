@@ -4,9 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.Toast;
 
 import com.example.mbp.projetandroidimie.R;
 import com.example.mbp.projetandroidimie.adapters.adapterCase;
@@ -33,24 +37,26 @@ public class Dames extends AppCompatActivity{
         initGridView();
 
         final Button button = (Button) findViewById(R.id.btnMove);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                move();
+
+
+        gv.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                int x = position%8;
+                int y = position/8;
+                Toast.makeText(Dames.this, "x = "+x+" y= "+y, Toast.LENGTH_SHORT).show();
             }
         });
 
     }
 
-    public void move(){
+    public void move(int x,int y,int xar,int yar){
 
-        int i = 0;
-        int j = 0;
-
-
-        Case tmp = tabCaseFinal[0];
-        tabCaseFinal[0] = new Case(true,0);
-        tabCaseFinal[25] = tmp;
-
+        if(tabCaseFinal[x+8*y].getImg()!=0 && tabCaseFinal[xar+8*yar].getColor() && tabCaseFinal[xar+8*yar].getImg()==0){ //case depart pleine et arrivée noir et vide
+            Case tmp = tabCaseFinal[x+8*y];
+            tabCaseFinal[x+8*y] = new Case(true,0);
+            tabCaseFinal[xar+8*yar] = tmp;
+        }
         gv.setAdapter(new adapterCase(this,R.layout.case_element,tabCaseFinal));
     }
 
@@ -71,7 +77,6 @@ public class Dames extends AppCompatActivity{
                         tab_case[i][j] = new Case(true,R.drawable.gabe_noir);
                     }
                     else tab_case[i][j] = new Case(true,0);
-
                 }
                 else tab_case[i][j] = new Case(false,0);
             }
