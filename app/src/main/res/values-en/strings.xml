@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ProjetAndroidIMIE</string>
+    <string name="txt_pass">Password</string>
+    <string name="txt_view">Username</string>
+    <string-array name="ar_jeux">
+        <item name="Dames">Draughts</item>
+        <item name="Sudoku">Sudoku</item>
+        <item name="P4">Connect 4</item>
+        <item name="petitChevaux">Petit Chevaux</item>
+        <item name="Naval">Battleship</item>
+        <item name="echecs">Chess</item>
+    </string-array>
+    <string name="btn_Load">Load</string>
+    <string name="btn_Save">Save</string>
+
+</resources>

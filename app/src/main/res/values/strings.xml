@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">ProjetAndroidIMIE</string>
+    <string name="btn_login" translatable="false">Go</string>
+    <string name="btn_Save">Enregistrer</string>
+    <string name="btn_Load">Charger</string>
+    <string name="txt_view">Nom d\'utilisateur</string>
+    <string name="txt_pass">Mot de Passe</string>
+    <string-array name="ar_jeux">
+        <item name="Dames">Dames</item>
+        <item name="Sudoku">Sudoku</item>
+        <item name="P4">Puissance 4</item>
+        <item name="petitChevaux">Petits chevaux</item>
+        <item name="Naval">Bataille Navale</item>
+        <item name="echecs">Echecs</item>
+    </string-array>
+</resources>
