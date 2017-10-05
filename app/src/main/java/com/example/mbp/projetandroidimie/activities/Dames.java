@@ -80,6 +80,7 @@ public class Dames extends AppCompatActivity{
             Case tmp = tabCaseFinal[x+8*y];
             tabCaseFinal[x+8*y] = new Case(true,0);
             tabCaseFinal[xar+8*yar] = tmp;
+            step=0;
         }
         gv.setAdapter(new adapterCase(this,R.layout.case_element,tabCaseFinal));
     }
