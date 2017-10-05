@@ -28,27 +28,51 @@ public class Dames extends AppCompatActivity{
     GridView gv;
     Case[][] tab_case;
     Case[] tabCaseFinal;
+    int fX;
+    int fY;
+    int step;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dames_layout);
+        step =0;
 
         initGridView();
 
         final Button button = (Button) findViewById(R.id.btnMove);
 
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(Dames.this, "clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         gv.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                step++;
+
                 int x = position%8;
                 int y = position/8;
+
                 Toast.makeText(Dames.this, "x = "+x+" y= "+y, Toast.LENGTH_SHORT).show();
+
+                if(step == 1){
+                    fX=x;
+                    fY=y;
+                }
+                else if(step ==2){
+                    move(fX,fY,x,y);
+                    step = 0;
+                }
+
             }
         });
 
     }
+
 
     public void move(int x,int y,int xar,int yar){
 
