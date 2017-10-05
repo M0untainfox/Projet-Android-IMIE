@@ -54,7 +54,11 @@ public class adapterCase extends ArrayAdapter {
             vhp = (ViewHolderPattern) convertView.getTag();
         }
         if(jx.getColor()){
-            vhp.tx.setBackgroundResource(R.drawable.case_noir);
+            if(jx.getState()==1){
+                vhp.tx.setBackgroundResource(R.drawable.case_bleue);
+            }
+            else vhp.tx.setBackgroundResource(R.drawable.case_noir);
+
         }
         else vhp.tx.setBackgroundResource(R.drawable.case_blanche);
         if(jx.getImg()!=0) vhp.tx.setImageResource(jx.getImg());

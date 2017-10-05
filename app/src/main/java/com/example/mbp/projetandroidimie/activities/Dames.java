@@ -62,12 +62,14 @@ public class Dames extends AppCompatActivity{
                 if(step == 1){
                     fX=x;
                     fY=y;
+                    tabCaseFinal[position].setState(1);
+                    gv.setAdapter(new adapterCase(Dames.this,R.layout.case_element,tabCaseFinal));
                 }
                 else if(step ==2){
+                    tabCaseFinal[8*fY+fX].setState(0);
                     move(fX,fY,x,y);
                     step = 0;
                 }
-
             }
         });
 
@@ -78,7 +80,7 @@ public class Dames extends AppCompatActivity{
 
         if(tabCaseFinal[x+8*y].getImg()!=0 && tabCaseFinal[xar+8*yar].getColor() && tabCaseFinal[xar+8*yar].getImg()==0){ //case depart pleine et arrivée noir et vide
             Case tmp = tabCaseFinal[x+8*y];
-            tabCaseFinal[x+8*y] = new Case(true,0);
+            tabCaseFinal[x+8*y] = new Case(true,0,0);
             tabCaseFinal[xar+8*yar] = tmp;
             step=0;
         }
@@ -96,14 +98,14 @@ public class Dames extends AppCompatActivity{
             for(int j=0;j<8;j++){
                 if((i%2 == 0 && j%2 ==0) || (i%2 == 1 && j%2 ==1)){
                     if(j<3){
-                        tab_case[i][j] = new Case(true,R.drawable.cumlord);
+                        tab_case[i][j] = new Case(true,R.drawable.cumlord,0);
                     }
                     else if(j>4){
-                        tab_case[i][j] = new Case(true,R.drawable.gabe_noir);
+                        tab_case[i][j] = new Case(true,R.drawable.gabe_noir,0);
                     }
-                    else tab_case[i][j] = new Case(true,0);
+                    else tab_case[i][j] = new Case(true,0,0);
                 }
-                else tab_case[i][j] = new Case(false,0);
+                else tab_case[i][j] = new Case(false,0,0);
             }
         }
 
