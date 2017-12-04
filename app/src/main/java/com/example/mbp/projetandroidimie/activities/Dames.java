@@ -31,6 +31,7 @@ public class Dames extends AppCompatActivity{
     int fX;
     int fY;
     int step;
+    adapterCase adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +64,8 @@ public class Dames extends AppCompatActivity{
                     fX=x;
                     fY=y;
                     tabCaseFinal[position].setState(1);
-                    gv.setAdapter(new adapterCase(Dames.this,R.layout.case_element,tabCaseFinal));
+                    adapter.notifyDataSetChanged();
+                    gv.setAdapter(adapter);
                 }
                 else if(step ==2){
                     tabCaseFinal[8*fY+fX].setState(0);
@@ -84,7 +86,8 @@ public class Dames extends AppCompatActivity{
             tabCaseFinal[xar+8*yar] = tmp;
             step=0;
         }
-        gv.setAdapter(new adapterCase(this,R.layout.case_element,tabCaseFinal));
+        adapter.notifyDataSetChanged();
+        gv.setAdapter(adapter);
     }
 
 
@@ -118,7 +121,8 @@ public class Dames extends AppCompatActivity{
             }
         }
 
-        gv.setAdapter(new adapterCase(this,R.layout.case_element,tabCaseFinal));
+        adapter = new adapterCase(this,R.layout.case_element,tabCaseFinal);
+        gv.setAdapter(adapter);
 
 
     }
