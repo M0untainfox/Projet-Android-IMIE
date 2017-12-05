@@ -42,7 +42,7 @@ public class MenuActivity extends AppCompatActivity {
 
 
 
-        tab_jeux = new Jeux[mes_jeux.length];
+        tab_jeux = new Jeux[mes_jeux.length+1];
 
         tab_jeux[0] = new Jeux(mes_jeux[0],R.drawable.dames,new Intent(this, Dames.class));
         tab_jeux[1] = new Jeux(mes_jeux[1],R.drawable.sudoku,new Intent(this, Sudoku.class));
@@ -51,7 +51,7 @@ public class MenuActivity extends AppCompatActivity {
         tab_jeux[4] = new Jeux(mes_jeux[4],R.drawable.bn,new Intent(this, Battleship.class));
         tab_jeux[5] = new Jeux(mes_jeux[5],R.drawable.echecs,new Intent(this, Chess.class));
 
-
+        tab_jeux[6] = new Jeux("SQL",R.drawable.echecs,new Intent(this, Sql.class));
 
         gv.setOnItemClickListener(new GridViewListener(this));
         gv.setAdapter(new adapters(this,R.layout.mes_jeux_element,tab_jeux));
@@ -68,7 +68,7 @@ public class MenuActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode==MesConstantes.RQC_battleship && resultCode==MesConstantes.RC_battleship){
-            Toast.makeText(this,data.getStringExtra("result"), Toast.LENGTH_LONG).show();
+           // Toast.makeText(this,data.getStringExtra("result"), Toast.LENGTH_LONG).show();
         }
     }
 }
